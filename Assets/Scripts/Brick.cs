@@ -4,6 +4,8 @@ using System.Collections;
 public class Brick : MonoBehaviour {
 
 	public static int brickCount = 0;
+
+	public GameObject smoke;
 	
 	public AudioClip crack;
 	public AudioClip broke;
@@ -44,6 +46,7 @@ public class Brick : MonoBehaviour {
 			AudioSource.PlayClipAtPoint(broke, transform.position);
 			brickCount--;
 			levelManager.BrickDestroyed();
+			Instantiate (smoke, gameObject.transform.position, Quaternion.identity);
 			Destroy(gameObject);
 		} else {
 			LoadSprites();
